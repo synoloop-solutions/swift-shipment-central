@@ -10,19 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as QuoteRequestRouteImport } from './routes/quote-request'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as CoverageRouteImport } from './routes/coverage'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
@@ -38,6 +42,11 @@ import { Route as CareersSlugRouteImport } from './routes/careers.$slug'
 const TrackingRoute = TrackingRouteImport.update({
   id: '/tracking',
   path: '/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TeamRoute = TeamRouteImport.update({
@@ -65,6 +74,11 @@ const QuoteRequestRoute = QuoteRequestRouteImport.update({
   path: '/quote-request',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -85,6 +99,11 @@ const CoverageRoute = CoverageRouteImport.update({
   path: '/coverage',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -103,6 +122,11 @@ const CaseStudiesRoute = CaseStudiesRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -164,19 +188,23 @@ const CareersSlugRoute = CareersSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/careers': typeof CareersRouteWithChildren
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/compliance': typeof ComplianceRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/coverage': typeof CoverageRouteWithChildren
   '/fleet': typeof FleetRouteWithChildren
   '/industries': typeof IndustriesRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/quote-request': typeof QuoteRequestRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/services': typeof ServicesRouteWithChildren
   '/team': typeof TeamRouteWithChildren
+  '/terms': typeof TermsRoute
   '/tracking': typeof TrackingRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
@@ -191,19 +219,23 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/careers': typeof CareersRouteWithChildren
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/compliance': typeof ComplianceRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/coverage': typeof CoverageRouteWithChildren
   '/fleet': typeof FleetRouteWithChildren
   '/industries': typeof IndustriesRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/quote-request': typeof QuoteRequestRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/services': typeof ServicesRouteWithChildren
   '/team': typeof TeamRouteWithChildren
+  '/terms': typeof TermsRoute
   '/tracking': typeof TrackingRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
@@ -219,19 +251,23 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/careers': typeof CareersRouteWithChildren
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/compliance': typeof ComplianceRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/coverage': typeof CoverageRouteWithChildren
   '/fleet': typeof FleetRouteWithChildren
   '/industries': typeof IndustriesRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/quote-request': typeof QuoteRequestRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
   '/services': typeof ServicesRouteWithChildren
   '/team': typeof TeamRouteWithChildren
+  '/terms': typeof TermsRoute
   '/tracking': typeof TrackingRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
@@ -248,19 +284,23 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/careers'
     | '/case-studies'
     | '/compliance'
     | '/contact'
+    | '/cookie-policy'
     | '/coverage'
     | '/fleet'
     | '/industries'
     | '/news'
+    | '/privacy'
     | '/quote-request'
     | '/resources'
     | '/search'
     | '/services'
     | '/team'
+    | '/terms'
     | '/tracking'
     | '/careers/$slug'
     | '/case-studies/$slug'
@@ -275,19 +315,23 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/careers'
     | '/case-studies'
     | '/compliance'
     | '/contact'
+    | '/cookie-policy'
     | '/coverage'
     | '/fleet'
     | '/industries'
     | '/news'
+    | '/privacy'
     | '/quote-request'
     | '/resources'
     | '/search'
     | '/services'
     | '/team'
+    | '/terms'
     | '/tracking'
     | '/careers/$slug'
     | '/case-studies/$slug'
@@ -302,19 +346,23 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
     | '/careers'
     | '/case-studies'
     | '/compliance'
     | '/contact'
+    | '/cookie-policy'
     | '/coverage'
     | '/fleet'
     | '/industries'
     | '/news'
+    | '/privacy'
     | '/quote-request'
     | '/resources'
     | '/search'
     | '/services'
     | '/team'
+    | '/terms'
     | '/tracking'
     | '/careers/$slug'
     | '/case-studies/$slug'
@@ -330,19 +378,23 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
   CareersRoute: typeof CareersRouteWithChildren
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ComplianceRoute: typeof ComplianceRoute
   ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
   CoverageRoute: typeof CoverageRouteWithChildren
   FleetRoute: typeof FleetRouteWithChildren
   IndustriesRoute: typeof IndustriesRouteWithChildren
   NewsRoute: typeof NewsRouteWithChildren
+  PrivacyRoute: typeof PrivacyRoute
   QuoteRequestRoute: typeof QuoteRequestRoute
   ResourcesRoute: typeof ResourcesRoute
   SearchRoute: typeof SearchRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TeamRoute: typeof TeamRouteWithChildren
+  TermsRoute: typeof TermsRoute
   TrackingRoute: typeof TrackingRoute
 }
 
@@ -353,6 +405,13 @@ declare module '@tanstack/react-router' {
       path: '/tracking'
       fullPath: '/tracking'
       preLoaderRoute: typeof TrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/team': {
@@ -390,6 +449,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuoteRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -418,6 +484,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoverageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -444,6 +517,13 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -620,19 +700,23 @@ const TeamRouteWithChildren = TeamRoute._addFileChildren(TeamRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
   CareersRoute: CareersRouteWithChildren,
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ComplianceRoute: ComplianceRoute,
   ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
   CoverageRoute: CoverageRouteWithChildren,
   FleetRoute: FleetRouteWithChildren,
   IndustriesRoute: IndustriesRouteWithChildren,
   NewsRoute: NewsRouteWithChildren,
+  PrivacyRoute: PrivacyRoute,
   QuoteRequestRoute: QuoteRequestRoute,
   ResourcesRoute: ResourcesRoute,
   SearchRoute: SearchRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TeamRoute: TeamRouteWithChildren,
+  TermsRoute: TermsRoute,
   TrackingRoute: TrackingRoute,
 }
 export const routeTree = rootRouteImport
