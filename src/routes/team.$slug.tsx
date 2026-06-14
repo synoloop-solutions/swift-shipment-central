@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
-import { getTeamMember, team } from "@/data/team";
+import { getTeamMember, team, type TeamMember } from "@/data/team";
 
 export const Route = createFileRoute("/team/$slug")({
   loader: ({ params }) => {
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/team/$slug")({
 });
 
 function MemberDetail() {
-  const { member: m } = Route.useLoaderData();
+  const { member: m } = Route.useLoaderData() as { member: TeamMember };
   const others = team.filter((t) => t.slug !== m.slug).slice(0, 4);
   return (
     <>

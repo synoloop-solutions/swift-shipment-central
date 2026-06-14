@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
-import { getArticle, news } from "@/data/news";
+import { getArticle, news, type Article } from "@/data/news";
 
 export const Route = createFileRoute("/news/$slug")({
   loader: ({ params }) => {
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/news/$slug")({
 });
 
 function ArticleDetail() {
-  const { article: a } = Route.useLoaderData();
+  const { article: a } = Route.useLoaderData() as { article: Article };
   const related = news.filter((n) => n.slug !== a.slug && n.category === a.category).slice(0, 3);
   return (
     <>

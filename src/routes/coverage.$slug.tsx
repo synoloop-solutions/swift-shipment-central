@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
-import { getRegion, regions } from "@/data/coverage";
+import { getRegion, regions, type Region } from "@/data/coverage";
 
 export const Route = createFileRoute("/coverage/$slug")({
   loader: ({ params }) => {
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/coverage/$slug")({
 });
 
 function RegionDetail() {
-  const { region: r } = Route.useLoaderData();
+  const { region: r } = Route.useLoaderData() as { region: Region };
   const others = regions.filter((x) => x.slug !== r.slug);
   return (
     <>

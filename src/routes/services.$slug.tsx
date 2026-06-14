@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
-import { getService, services } from "@/data/services";
+import { getService, services, type Service } from "@/data/services";
 import { getCaseStudy } from "@/data/caseStudies";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServiceDetail() {
-  const { service } = Route.useLoaderData();
+  const { service } = Route.useLoaderData() as { service: Service };
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (

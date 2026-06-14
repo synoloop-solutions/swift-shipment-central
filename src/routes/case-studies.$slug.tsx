@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
-import { getCaseStudy, caseStudies } from "@/data/caseStudies";
+import { getCaseStudy, caseStudies, type CaseStudy } from "@/data/caseStudies";
 
 export const Route = createFileRoute("/case-studies/$slug")({
   loader: ({ params }) => {
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/case-studies/$slug")({
 });
 
 function Detail() {
-  const { study: c } = Route.useLoaderData();
+  const { study: c } = Route.useLoaderData() as { study: CaseStudy };
   const related = caseStudies.filter((s) => s.slug !== c.slug && s.industry === c.industry).slice(0, 3);
   return (
     <>

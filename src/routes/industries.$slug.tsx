@@ -3,7 +3,7 @@ import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getIndustry, industries } from "@/data/industries";
+import { getIndustry, industries, type Industry } from "@/data/industries";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }) => {
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/industries/$slug")({
 });
 
 function IndustryDetail() {
-  const { industry } = Route.useLoaderData();
+  const { industry } = Route.useLoaderData() as { industry: Industry };
   const others = industries.filter((i) => i.slug !== industry.slug).slice(0, 3);
   return (
     <>

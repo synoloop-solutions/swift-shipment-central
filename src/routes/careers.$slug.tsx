@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
-import { getCareer, careers } from "@/data/careers";
+import { getCareer, careers, type Career } from "@/data/careers";
 
 export const Route = createFileRoute("/careers/$slug")({
   loader: ({ params }) => {
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/careers/$slug")({
 });
 
 function CareerDetail() {
-  const { role } = Route.useLoaderData();
+  const { role } = Route.useLoaderData() as { role: Career };
   const others = careers.filter((c) => c.slug !== role.slug).slice(0, 4);
   const [submitted, setSubmitted] = useState(false);
 

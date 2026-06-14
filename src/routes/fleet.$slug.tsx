@@ -3,7 +3,7 @@ import { PageHeader, Section } from "@/components/layout/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
-import { getFleet, fleet } from "@/data/fleet";
+import { getFleet, fleet, type FleetVehicle } from "@/data/fleet";
 
 export const Route = createFileRoute("/fleet/$slug")({
   loader: ({ params }) => {
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/fleet/$slug")({
 });
 
 function FleetDetail() {
-  const { vehicle: v } = Route.useLoaderData();
+  const { vehicle: v } = Route.useLoaderData() as { vehicle: FleetVehicle };
   const others = fleet.filter((f) => f.slug !== v.slug).slice(0, 3);
   return (
     <>
