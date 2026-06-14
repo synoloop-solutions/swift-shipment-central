@@ -26,10 +26,10 @@ export const Route = createFileRoute("/fleet/compare")({
 });
 
 function ComparePage() {
-  const { ids } = Route.useSearch();
+  const { ids } = Route.useSearch() as { ids: string };
   const navigate = useNavigate({ from: "/fleet/compare" });
-  const selected = ids.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 4);
-  const vehicles = selected.map((slug) => fleet.find((f) => f.slug === slug)).filter(Boolean) as typeof fleet;
+  const selected: string[] = ids.split(",").map((s: string) => s.trim()).filter(Boolean).slice(0, 4);
+  const vehicles = selected.map((slug: string) => fleet.find((f) => f.slug === slug)).filter(Boolean) as typeof fleet;
   const available = fleet.filter((f) => !selected.includes(f.slug));
 
   const setIds = (next: string[]) =>
@@ -75,7 +75,7 @@ function ComparePage() {
                       <div className="aspect-[16/10] overflow-hidden rounded-md"><img src={v.image} alt={v.name} className="h-full w-full object-cover" loading="lazy" /></div>
                       <div className="mt-3 flex items-start justify-between gap-2">
                         <Link to="/fleet/$slug" params={{ slug: v.slug }} className="font-display text-sm font-semibold hover:underline">{v.name}</Link>
-                        <button onClick={() => setIds(selected.filter((s) => s !== v.slug))} aria-label={`Remove ${v.name}`} className="text-muted-foreground hover:text-destructive"><X className="h-4 w-4" /></button>
+                        <button onClick={() => setIds(selected.filter((s: string) => s !== v.slug))} aria-label={`Remove ${v.name}`} className="text-muted-foreground hover:text-destructive"><X className="h-4 w-4" /></button>
                       </div>
                       <p className="text-xs text-muted-foreground">{v.category}</p>
                     </th>
