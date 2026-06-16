@@ -29,6 +29,14 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeamIndexRouteImport } from './routes/team.index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as NewsIndexRouteImport } from './routes/news.index'
+import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
+import { Route as FleetIndexRouteImport } from './routes/fleet.index'
+import { Route as CoverageIndexRouteImport } from './routes/coverage.index'
+import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
+import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
@@ -139,6 +147,46 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamIndexRoute = TeamIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TeamRoute,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => NewsRoute,
+} as any)
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => IndustriesRoute,
+} as any)
+const FleetIndexRoute = FleetIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FleetRoute,
+} as any)
+const CoverageIndexRoute = CoverageIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CoverageRoute,
+} as any)
+const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CaseStudiesRoute,
+} as any)
+const CareersIndexRoute = CareersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CareersRoute,
+} as any)
 const TeamSlugRoute = TeamSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -215,26 +263,26 @@ export interface FileRoutesByFullPath {
   '/news/$slug': typeof NewsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/team/$slug': typeof TeamSlugRoute
+  '/careers/': typeof CareersIndexRoute
+  '/case-studies/': typeof CaseStudiesIndexRoute
+  '/coverage/': typeof CoverageIndexRoute
+  '/fleet/': typeof FleetIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/news/': typeof NewsIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/team/': typeof TeamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
-  '/careers': typeof CareersRouteWithChildren
-  '/case-studies': typeof CaseStudiesRouteWithChildren
   '/compliance': typeof ComplianceRoute
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
-  '/coverage': typeof CoverageRouteWithChildren
-  '/fleet': typeof FleetRouteWithChildren
-  '/industries': typeof IndustriesRouteWithChildren
-  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/quote-request': typeof QuoteRequestRoute
   '/resources': typeof ResourcesRoute
   '/search': typeof SearchRoute
-  '/services': typeof ServicesRouteWithChildren
-  '/team': typeof TeamRouteWithChildren
   '/terms': typeof TermsRoute
   '/tracking': typeof TrackingRoute
   '/careers/$slug': typeof CareersSlugRoute
@@ -246,6 +294,14 @@ export interface FileRoutesByTo {
   '/news/$slug': typeof NewsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/team/$slug': typeof TeamSlugRoute
+  '/careers': typeof CareersIndexRoute
+  '/case-studies': typeof CaseStudiesIndexRoute
+  '/coverage': typeof CoverageIndexRoute
+  '/fleet': typeof FleetIndexRoute
+  '/industries': typeof IndustriesIndexRoute
+  '/news': typeof NewsIndexRoute
+  '/services': typeof ServicesIndexRoute
+  '/team': typeof TeamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -278,6 +334,14 @@ export interface FileRoutesById {
   '/news/$slug': typeof NewsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/team/$slug': typeof TeamSlugRoute
+  '/careers/': typeof CareersIndexRoute
+  '/case-studies/': typeof CaseStudiesIndexRoute
+  '/coverage/': typeof CoverageIndexRoute
+  '/fleet/': typeof FleetIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/news/': typeof NewsIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/team/': typeof TeamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -311,26 +375,26 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/services/$slug'
     | '/team/$slug'
+    | '/careers/'
+    | '/case-studies/'
+    | '/coverage/'
+    | '/fleet/'
+    | '/industries/'
+    | '/news/'
+    | '/services/'
+    | '/team/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/accessibility'
-    | '/careers'
-    | '/case-studies'
     | '/compliance'
     | '/contact'
     | '/cookie-policy'
-    | '/coverage'
-    | '/fleet'
-    | '/industries'
-    | '/news'
     | '/privacy'
     | '/quote-request'
     | '/resources'
     | '/search'
-    | '/services'
-    | '/team'
     | '/terms'
     | '/tracking'
     | '/careers/$slug'
@@ -342,6 +406,14 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/services/$slug'
     | '/team/$slug'
+    | '/careers'
+    | '/case-studies'
+    | '/coverage'
+    | '/fleet'
+    | '/industries'
+    | '/news'
+    | '/services'
+    | '/team'
   id:
     | '__root__'
     | '/'
@@ -373,6 +445,14 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/services/$slug'
     | '/team/$slug'
+    | '/careers/'
+    | '/case-studies/'
+    | '/coverage/'
+    | '/fleet/'
+    | '/industries/'
+    | '/news/'
+    | '/services/'
+    | '/team/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -540,6 +620,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/': {
+      id: '/team/'
+      path: '/'
+      fullPath: '/team/'
+      preLoaderRoute: typeof TeamIndexRouteImport
+      parentRoute: typeof TeamRoute
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/news/': {
+      id: '/news/'
+      path: '/'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/industries/': {
+      id: '/industries/'
+      path: '/'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
+    '/fleet/': {
+      id: '/fleet/'
+      path: '/'
+      fullPath: '/fleet/'
+      preLoaderRoute: typeof FleetIndexRouteImport
+      parentRoute: typeof FleetRoute
+    }
+    '/coverage/': {
+      id: '/coverage/'
+      path: '/'
+      fullPath: '/coverage/'
+      preLoaderRoute: typeof CoverageIndexRouteImport
+      parentRoute: typeof CoverageRoute
+    }
+    '/case-studies/': {
+      id: '/case-studies/'
+      path: '/'
+      fullPath: '/case-studies/'
+      preLoaderRoute: typeof CaseStudiesIndexRouteImport
+      parentRoute: typeof CaseStudiesRoute
+    }
+    '/careers/': {
+      id: '/careers/'
+      path: '/'
+      fullPath: '/careers/'
+      preLoaderRoute: typeof CareersIndexRouteImport
+      parentRoute: typeof CareersRoute
+    }
     '/team/$slug': {
       id: '/team/$slug'
       path: '/$slug'
@@ -608,10 +744,12 @@ declare module '@tanstack/react-router' {
 
 interface CareersRouteChildren {
   CareersSlugRoute: typeof CareersSlugRoute
+  CareersIndexRoute: typeof CareersIndexRoute
 }
 
 const CareersRouteChildren: CareersRouteChildren = {
   CareersSlugRoute: CareersSlugRoute,
+  CareersIndexRoute: CareersIndexRoute,
 }
 
 const CareersRouteWithChildren =
@@ -619,10 +757,12 @@ const CareersRouteWithChildren =
 
 interface CaseStudiesRouteChildren {
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
+  CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
 }
 
 const CaseStudiesRouteChildren: CaseStudiesRouteChildren = {
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
+  CaseStudiesIndexRoute: CaseStudiesIndexRoute,
 }
 
 const CaseStudiesRouteWithChildren = CaseStudiesRoute._addFileChildren(
@@ -631,10 +771,12 @@ const CaseStudiesRouteWithChildren = CaseStudiesRoute._addFileChildren(
 
 interface CoverageRouteChildren {
   CoverageSlugRoute: typeof CoverageSlugRoute
+  CoverageIndexRoute: typeof CoverageIndexRoute
 }
 
 const CoverageRouteChildren: CoverageRouteChildren = {
   CoverageSlugRoute: CoverageSlugRoute,
+  CoverageIndexRoute: CoverageIndexRoute,
 }
 
 const CoverageRouteWithChildren = CoverageRoute._addFileChildren(
@@ -644,21 +786,25 @@ const CoverageRouteWithChildren = CoverageRoute._addFileChildren(
 interface FleetRouteChildren {
   FleetSlugRoute: typeof FleetSlugRoute
   FleetCompareRoute: typeof FleetCompareRoute
+  FleetIndexRoute: typeof FleetIndexRoute
 }
 
 const FleetRouteChildren: FleetRouteChildren = {
   FleetSlugRoute: FleetSlugRoute,
   FleetCompareRoute: FleetCompareRoute,
+  FleetIndexRoute: FleetIndexRoute,
 }
 
 const FleetRouteWithChildren = FleetRoute._addFileChildren(FleetRouteChildren)
 
 interface IndustriesRouteChildren {
   IndustriesSlugRoute: typeof IndustriesSlugRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
 }
 
 const IndustriesRouteChildren: IndustriesRouteChildren = {
   IndustriesSlugRoute: IndustriesSlugRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
 }
 
 const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
@@ -667,20 +813,24 @@ const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
 
 interface NewsRouteChildren {
   NewsSlugRoute: typeof NewsSlugRoute
+  NewsIndexRoute: typeof NewsIndexRoute
 }
 
 const NewsRouteChildren: NewsRouteChildren = {
   NewsSlugRoute: NewsSlugRoute,
+  NewsIndexRoute: NewsIndexRoute,
 }
 
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
@@ -689,10 +839,12 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 interface TeamRouteChildren {
   TeamSlugRoute: typeof TeamSlugRoute
+  TeamIndexRoute: typeof TeamIndexRoute
 }
 
 const TeamRouteChildren: TeamRouteChildren = {
   TeamSlugRoute: TeamSlugRoute,
+  TeamIndexRoute: TeamIndexRoute,
 }
 
 const TeamRouteWithChildren = TeamRoute._addFileChildren(TeamRouteChildren)
@@ -722,13 +874,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
