@@ -17,7 +17,7 @@ export const Route = createFileRoute("/case-studies/$slug")({
     ],
   }),
   notFoundComponent: () => (<Section><h1 className="text-2xl font-bold">Case study not found</h1><Link to="/case-studies" className="text-accent">Back</Link></Section>),
-  errorComponent: ({ error }) => <Section><p>{error.message}</p></Section>,
+  errorComponent: ({ error }) => <Section><p>{(error as Error).message}</p></Section>,
   component: Detail,
 });
 

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/news/$slug")({
     }) }] : [],
   }),
   notFoundComponent: () => (<Section><h1 className="text-2xl font-bold">Article not found</h1><Link to="/news" className="text-accent">Back</Link></Section>),
-  errorComponent: ({ error }) => <Section><p>{error.message}</p></Section>,
+  errorComponent: ({ error }) => <Section><p>{(error as Error).message}</p></Section>,
   component: ArticleDetail,
 });
 

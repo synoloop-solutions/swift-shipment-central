@@ -31,7 +31,7 @@ export const Route = createFileRoute("/services/$slug")({
   notFoundComponent: () => (
     <Section><div className="text-center"><h1 className="text-2xl font-bold">Service not found</h1><Link to="/services" className="text-accent underline">Back to services</Link></div></Section>
   ),
-  errorComponent: ({ error }) => <Section><p>{error.message}</p></Section>,
+  errorComponent: ({ error }) => <Section><p>{(error as Error).message}</p></Section>,
   component: ServiceDetail,
 });
 

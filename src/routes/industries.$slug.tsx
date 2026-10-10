@@ -21,7 +21,7 @@ export const Route = createFileRoute("/industries/$slug")({
   notFoundComponent: () => (
     <Section><h1 className="text-2xl font-bold">Industry not found</h1><Link to="/industries" className="text-accent">Back</Link></Section>
   ),
-  errorComponent: ({ error }) => <Section><p>{error.message}</p></Section>,
+  errorComponent: ({ error }) => <Section><p>{(error as Error).message}</p></Section>,
   component: IndustryDetail,
 });
 

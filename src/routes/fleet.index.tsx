@@ -21,7 +21,7 @@ function FleetPage() {
   return (
     <>
       <PageHeader eyebrow="Fleet" title="A modern, mixed, sustainable fleet" description="Diesel, electric, alternative-fuel — sized to the move.">
-        <Button asChild variant="secondary"><Link to="/fleet/compare"><GitCompareArrows className="mr-2 h-4 w-4" /> Compare vehicles</Link></Button>
+        <Button asChild variant="secondary"><Link to="/fleet/compare" search={{ ids: "" }}><GitCompareArrows className="mr-2 h-4 w-4" /> Compare vehicles</Link></Button>
       </PageHeader>
       <Section>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
